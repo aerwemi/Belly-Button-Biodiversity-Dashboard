@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BB Dashboard</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        
+        
+        <div class="span6" style="float: none; margin: 0 auto;">
+            <div class="jumbotron">
+                <h2 class="display-3">Belly Button Biodiversity Dashboard</h2>
+                <p class="lead">
+                    Belly button germs: What's living in your navel?!
+                </p>
+                <hr class="my-4">
+                <p>By: Naser Erwemi.</p>
+                <p> Univ. of Texas at Austin.</p>
+                <div class="textwidget">
+                    <a type="button" title="LinkedIn" class="btn-floating btn-large btn-li" , href="https://www.linkedin.com/in/aerwemi/" target="_blank">
+                        <i class="fa fa-linkedin"></i>
+                        <span class="screen-reader-text">Follow Me on LinkedIn</span>
+                        <span class="icon icon-linkedin-u" aria-hidden="true"></span>
+                    </a>
+
+                </div>
+                <p id="date"></p>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+
+                        <div class="row jumbotron">
+                            <h4 class="row" >Select Sample:</h4>
+                            <select class="row" id="selDataset" onchange="optionChanged(this.value)">
+
+                                
+                            </select>
+
+                        </div>
+                        <div class="row jumbotron">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <div id="plot2"></div>
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <div id="plot2"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- <script src="/static/js/app.js"></script> -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
