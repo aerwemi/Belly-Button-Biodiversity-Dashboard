@@ -36,7 +36,13 @@ def metadata(id):
     meta_data = meta_data[['AGE', 'BBTYPE', 'ETHNICITY', 'GENDER', 'LOCATION', 'SAMPLEID']]
     meta_data['ID'] = 'BB_' + meta_data['SAMPLEID'].astype(str)
     meta_data = meta_data.set_index('ID').to_dict('index')
-    return jsonify(meta_data[id])
+    data = meta_data[id]
+    mData = []
+    for k,v in data.items():
+        kv = {'t0':k, 't1':v}
+        mData.append(kv)
+
+    return jsonify(mData)
 
 @app.route('/wfreq/<id>')
 def wfreq(id):
