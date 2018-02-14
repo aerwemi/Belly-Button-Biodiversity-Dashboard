@@ -33,8 +33,8 @@ function testPlotly(name) {
           }];
 
         var layout = {
-           height: 400,
-           width: 400
+           height: 500,
+           width: 700
          };
         Plotly.newPlot("plot1", data, layout);
     });
