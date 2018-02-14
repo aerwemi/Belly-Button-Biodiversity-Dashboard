@@ -61,8 +61,13 @@ def samples(id):
     biodiversity_samples = pd.read_csv('data/belly_button_biodiversity_samples.csv')
     biodiversity_samples = biodiversity_samples[['otu_id',id]].sort_values(id, ascending=0)
     biodiversity_samples.columns = ['otu_id', "sample_values"]
-    biodiversity_samples = biodiversity_samples[biodiversity_samples['sample_values'] > 0]
-    return jsonify(biodiversity_samples.to_dict('list'))
+    biodiversity_samplesL = biodiversity_samples[biodiversity_samples['sample_values'] > 10]
+    small_vals = biodiversity_samples[biodiversity_samples['sample_values'] < 10]['sample_values'].sum()
+    smallD = {'otu_id' : 'Other GERMS', 'sample_values' : small_vals}
+    biodiversity_samplesS = pd.DataFrame(smallD, index=[0])
+    df = pd.concat([biodiversity_samplesL, biodiversity_samplesS])
+
+    return jsonify(df.to_dict('list'))
 
 
 
