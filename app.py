@@ -17,7 +17,6 @@ def names():
     # data load from csv file - pandas
     biodiversity_samples = pd.read_csv('data/belly_button_biodiversity_samples.csv', index_col=0)
     names_list=biodiversity_samples.columns.tolist()
-    print(f'first sample : {names_list[0]} --- last sample: {names_list[-1]}')
     return jsonify(names_list)
 
 @app.route('/otu')
@@ -25,8 +24,6 @@ def otu():
     # data load from csv file - pandas
     biodiversity_otu = pd.read_csv('data/belly_button_biodiversity_otu_id.csv', index_col=0)
     otu_list = biodiversity_otu['lowest_taxonomic_unit_found'].tolist()
-    print(f'first girm :  {otu_list[0]}')
-    print(f'last girm  :  {otu_list[-1]}')
     return jsonify(otu_list)
 
 @app.route('/metadata/<id>')
@@ -43,6 +40,19 @@ def metadata(id):
         mData.append(kv)
 
     return jsonify(mData)
+
+
+@app.route('/WFREQval/<id>')
+def WFREQval(id):
+    import pandas as pd
+    WFREQ = pd.read_csv('data/Belly_Button_Biodiversity_Metadata.csv')
+    WFREQ = WFREQ[['SAMPLEID', 'WFREQ']]
+    WFREQ['ID'] = 'BB_' + WFREQ['SAMPLEID'].astype(str)
+    WFREQ = WFREQ.drop(['SAMPLEID'], axis=1)
+    WFREQ = WFREQ.set_index('ID').to_dict('index')
+    WFREQ = WFREQ[id]
+
+    return jsonify(WFREQ)
 
 @app.route('/wfreq/<id>')
 def wfreq(id):
@@ -68,6 +78,17 @@ def samples(id):
     df = pd.concat([biodiversity_samplesL, biodiversity_samplesS])
 
     return jsonify(df.to_dict('list'))
+
+@app.route('/samples2/<id>')
+def samples2(id):
+    # data load from csv file - pandas
+    biodiversity_samples = pd.read_csv('data/belly_button_biodiversity_samples.csv')
+    biodiversity_samples = biodiversity_samples[['otu_id',id]].sort_values(id, ascending=0)
+    biodiversity_samples.columns = ['otu_id', "sample_values"]
+    biodiversity_samples = biodiversity_samples.fillna(0)
+    biodiversity_samples = biodiversity_samples[biodiversity_samples['sample_values'] > 0 ]
+
+    return jsonify(biodiversity_samples.to_dict('list'))
 
 
 
