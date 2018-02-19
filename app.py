@@ -31,6 +31,13 @@ def metadata(id):
     # data load from csv file - pandas
     meta_data = pd.read_csv('data/Belly_Button_Biodiversity_Metadata.csv')
     meta_data = meta_data[['AGE', 'BBTYPE', 'ETHNICITY', 'GENDER', 'LOCATION', 'SAMPLEID']]
+    meta_data['ETHNICITY'].fillna(value="Unidentified", inplace=True)
+    meta_data['LOCATION'].fillna(value="Unidentified", inplace=True)
+    meta_data['GENDER'].fillna(value="Unidentified", inplace=True)
+    meta_data['BBTYPE'].fillna(value="Unknown", inplace=True)
+    meta_data['AGE'].fillna(value=0, inplace=True)
+    meta_data['AGE'].fillna(value=0, inplace=True)
+    
     meta_data['ID'] = 'BB_' + meta_data['SAMPLEID'].astype(str)
     meta_data = meta_data.set_index('ID').to_dict('index')
     data = meta_data[id]
@@ -47,6 +54,7 @@ def WFREQval(id):
     import pandas as pd
     WFREQ = pd.read_csv('data/Belly_Button_Biodiversity_Metadata.csv')
     WFREQ = WFREQ[['SAMPLEID', 'WFREQ']]
+    WFREQ['WFREQ'].fillna(value=0, inplace=True)
     WFREQ['ID'] = 'BB_' + WFREQ['SAMPLEID'].astype(str)
     WFREQ = WFREQ.drop(['SAMPLEID'], axis=1)
     WFREQ = WFREQ.set_index('ID').to_dict('index')

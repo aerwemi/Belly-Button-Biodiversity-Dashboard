@@ -67,8 +67,8 @@ function testPlotly(name) {
             height: 500,
             width: 500,
             title: "Germ Diversity Scatter Plot",
-            xaxis: { dtick: 1000, title: "Germ Code" },
-            yaxis: { title: "Germ Count" },
+            xaxis: { range: [0, 4000], dtick: 1000, title: "Germ Code" },
+            yaxis: { range: [0, 2600], title: "Germ Count" },
         };
         Plotly.newPlot("plot3", data, layout);
         
