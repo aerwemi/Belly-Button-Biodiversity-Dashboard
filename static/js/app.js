@@ -36,7 +36,8 @@ function testPlotly(name) {
 
         var layout = {
             height: 500,
-            width: 700
+            width: 700,
+            title: "Germ Diversity Pie Chart",
         };
         Plotly.newPlot("plot1", data, layout);
         
@@ -64,7 +65,10 @@ function testPlotly(name) {
 
         var layout = {
             height: 500,
-            width: 500
+            width: 500,
+            title: "Germ Diversity Scatter Plot",
+            xaxis: { dtick: 1000, title: "Germ Code" },
+            yaxis: { title: "Germ Count" },
         };
         Plotly.newPlot("plot3", data, layout);
         
