@@ -66,7 +66,7 @@ function testPlotly(name) {
 
         var layout = {
             height: 500,
-            width: 500,
+            width: 1000,
             title: "Germ Diversity Scatter Plot",
             xaxis: { range: [0, 4000], dtick: 1000, title: "Germ Code" },
             yaxis: { range: [0, 2600], title: "Germ Count" },
@@ -92,8 +92,8 @@ function testPlotly(name) {
         }];
 
         var layout = {
-            height: 500,
-            width: 500,
+            height: 450,
+            width: 450,
             title: "Germ Diversity Stats This Sample vs. Others",
             xaxis: { title: "Stats" },
             yaxis: { title: "Count" },
