@@ -98,6 +98,26 @@ def samples2(id):
 
     return jsonify(biodiversity_samples.to_dict('list'))
 
+# for bar stats
+
+@app.route('/samples3/<id>')
+def samples3(id):
+    # data load from csv file - pandas
+    df = pd.read_csv('data/belly_button_biodiversity_samples.csv').drop(['otu_id'], axis=1).T
+    df['sum'] = df.sum(axis=1)
+    thisSamp=df.loc[id]['sum']
+    stats=df['sum'].describe().to_frame()
+    stats.loc['median'] = stats.loc['50%']
+    stats.loc[id] = thisSamp
+    stats.drop(['count', 'std', '50%'], inplace=True)
+    stats.sort_values(by=['sum'], ascending=False, inplace=True)
+    stats['sum'] = stats['sum'].astype('int')
+    stats.reset_index(inplace=True)
+    stats.columns = ['label', 'value']
+
+
+    return jsonify(stats.to_dict('list'))
+
 
 
 

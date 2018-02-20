@@ -5,7 +5,8 @@ function testPlotly(name) {
     var url3 = '/samples/'  + name;
     var url4 = '/WFREQval/' + name;
     var url5 = '/samples2/' + name;
-    console.log(url4);
+    var url6 = '/samples3/' + name;
+    console.log(url6);
 
     Plotly.d3.json(url2, function (error, metaData) {
         console.log(metaData);
@@ -70,11 +71,38 @@ function testPlotly(name) {
             xaxis: { range: [0, 4000], dtick: 1000, title: "Germ Code" },
             yaxis: { range: [0, 2600], title: "Germ Count" },
         };
+        Plotly.newPlot("plot2", data, layout);
+        
+    });
+
+    //End Scatter
+    
+    //Start Bar compare
+    
+    Plotly.d3.json(url6, function (error, barData) {
+
+        var labels0 = barData['label']
+
+        var values0 = barData['value']
+
+        var data = [{
+            y: values0,
+            x: labels0,
+            type: 'bar'
+        }];
+
+        var layout = {
+            height: 500,
+            width: 500,
+            title: "Germ Diversity Stats This Sample vs. Others",
+            xaxis: { title: "Stats" },
+            yaxis: { title: "Count" },
+        };
         Plotly.newPlot("plot3", data, layout);
         
     });
 
-    //End Scatter 
+    //End Bar Compare 
 
     // Guage Plot data 
     Plotly.d3.json(url4, function (error, guageData) {
@@ -149,8 +177,8 @@ function plotGuage(WFREQ) {
             }
         }],
         title: '<b>Washing Frequency Gauge!</b> <br> Frequency 0-10 times/week ',
-        height: 400,
-        width: 400,
+        height: 500,
+        width: 500,
         xaxis: {
             zeroline: false, showticklabels: false,
             showgrid: false, range: [-1, 1]
@@ -161,7 +189,7 @@ function plotGuage(WFREQ) {
         }
     };
 
-    Plotly.newPlot('gauge', data, layout);
+    Plotly.newPlot('plot4', data, layout);
 
 
 
