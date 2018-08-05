@@ -1,2 +1,2 @@
 # Belly-Button-Biodiversity-Dashboard
-![alt text](https://github.com/aerwemi/Belly-Button-Biodiversity-Dashboard/Sample.PNG)
+![Dashboard Sample](https://github.com/aerwemi/Belly-Button-Biodiversity-Dashboard/blob/master/Sample.PNG)
