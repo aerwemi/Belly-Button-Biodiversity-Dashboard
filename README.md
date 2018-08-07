@@ -2,7 +2,6 @@
 
 # Belly Button Biodiversity
 
-![Bacteria by filterforge.com](Images/bacteria_by_filterforgedotcom.jpg)
 
 An interactive dashboard to explore the [Belly Button Biodiversity DataSet](http://robdunnlab.com/projects/belly-button-biodiversity/).
 
@@ -28,5 +27,8 @@ See the exmple of the dashboard
 ## Heroku Web Deployment 
 Web deploy Flask app to Heroku.
 
+[Belly Button Biodiversity Dashboard Website](http://bit.ly/BBBiodiversityDashboard).
 
+
+## Sample Example 
 ![Dashboard Sample](https://github.com/aerwemi/Belly-Button-Biodiversity-Dashboard/blob/master/Sample.PNG)
